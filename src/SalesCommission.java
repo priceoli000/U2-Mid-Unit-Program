@@ -1,3 +1,4 @@
+
 /*
 A car salesperson typically earns an hourly wage and a commission on any sales they completed. They typically work 30 to 40
 hours a week, earning $5.25 to $7.50 an hour. Additionally, they earn 1% to 3% of all sales they've completed that week,
@@ -17,11 +18,46 @@ Total Sales: $65,000.00
 Total Earnings: $1184.38
 
  */
+/* 1. Find the hourly wage - variable : rate
+   2. Find the hours worked - variable : timeWorked
+   3. Find the sales commission percentage ; commissionPercent
+   4. Find the amount of car sales ;
+   5. Calculate total earnings ; hourly rate * hours worked + (total sales*sales commission percentage)
+   6. Display total earnings
+ */
+
+
+import javax.swing.*;
+import java.text.DecimalFormat;
 
 public class SalesCommission {
 
+
     public static void main(String[] args) {
+        double rate = getInput("What is the rate?");
+        double timeWorked = getInput("How many hours did you work?");
+        double commissionPercent = getInput("What is the commission percent?");
+        double carSaleAmount = getInput("What is the amount of sales?");
+        double totalCheck = total(rate, timeWorked, commissionPercent, carSaleAmount);
+
+
+        outPut(totalCheck);
+        System.exit(0);
+    }
+
+    public static double getInput(String message) {
+        return Double.parseDouble(JOptionPane.showInputDialog(message));
+    }
+        public static double total (double rate, double timeWorked, double commissionPercent, double carSaleAmount){
+            commissionPercent /= 100;
+            return (rate * timeWorked) + (commissionPercent * carSaleAmount);
+        }
+
+        public static void outPut(double totalCheck) {
+        DecimalFormat round = new DecimalFormat("##,###.##");
+            JOptionPane.showMessageDialog(null, "The total check is: " + round.format(totalCheck));
+
+        }
 
     }
 
-}
